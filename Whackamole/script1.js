@@ -4,9 +4,12 @@
       var moles;
       var scoreBoard;
       console.log(holes);
-      let lastHole;
-      let score = 0;
-      let timeUp;
+      var lastHole;
+      var score = 0;
+      var timeUp = true;
+      var audio = new Audio('smash.mp3')
+      
+      
 
       function loadGame() {
         holes = document.querySelectorAll('.hole');
@@ -28,7 +31,7 @@
       function randomHole(holes) { //Kiest een willekeurig gat voor de mol om uit te komen.
         //console.log(holes.length);
         var idx = Math.floor(Math.random() * holes.length); //vind random
-        var hole = holes[idx]; //of array?
+        var hole = holes[idx];
         /* if (hole === lastHole) { // Zorgt ervoor dat een mol niet twee keer uit hetzelfde gat komt.
           console.log('Doe maar niet, dat is hetzelfde gat.');
           return randomHole(holes);
@@ -39,8 +42,8 @@
       }
 
       function kiekeboe() { // Willekeurig een tijdsduur en gat kiezen, de mol omhoog en omlaag laten komen.
-        const time = randomTime(200, 1000);
-        const hole = randomHole(holes);
+        var time = randomTime(500, 2000);
+        var hole = randomHole(holes);
         console.log(time, hole);
         hole.classList.add('up');
         setTimeout(() => {
@@ -50,18 +53,21 @@
       }
 
       function startGame() {
-        scoreBoard[0].textContent = 0;
-        timeUp = false;
+        scoreBoard[0].innerHTML = 0;
+        //timeUp = false;
         score = 0;
         kiekeboe();
-        setTimeout(() => timeUp = true, 10000);
+        //setTimeout(() => timeUp = true, 5000);
       }
 
       function dreun(e) { // Bij slag: Mol omlaag, score omhoog.
         console.log(e);
+        audio.play();
         score++;
-       // console.log(score);
-        this.classList.remove('up');
-        //scoreBoard.textContent = score;
+        this.classList.remove('up'); // Werkt niet
         scoreBoard[0].innerHTML = score;
+        audio.play();
       }
+
+      // mol achter het gat krijgen
+      // remove up class bij dreun
