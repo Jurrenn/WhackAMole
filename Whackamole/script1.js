@@ -36,7 +36,7 @@
           console.log('Doe maar niet, dat is hetzelfde gat.');
           return randomHole(holes);
         }*/
-        console.log(hole);
+        //console.log(hole);
         lastHole = hole;
         return hole;
       }
@@ -44,30 +44,30 @@
       function kiekeboe() { // Willekeurig een tijdsduur en gat kiezen, de mol omhoog en omlaag laten komen.
         var time = randomTime(500, 2000);
         var hole = randomHole(holes);
-        console.log(time, hole);
+        //console.log(time, hole);
         hole.classList.add('up');
         setTimeout(() => {
-          hole.classList.remove('up');
-          if (timeUp) kiekeboe();
+         hole.classList.remove('up');
+          if (!timeUp) kiekeboe();
         }, time);
       }
 
       function startGame() {
         scoreBoard[0].innerHTML = 0;
-        //timeUp = false;
+        timeUp = false;
         score = 0;
         kiekeboe();
-        //setTimeout(() => timeUp = true, 5000);
+        setTimeout(() => timeUp = true, 30000); //run setTimeout na 30 seconden
       }
 
-      function dreun(e) { // Bij slag: Mol omlaag, score omhoog.
-        console.log(e);
-        audio.play();
+      function dreun(e) { // Bij slag: Mol gaat omlaag, score omhoog.
+        console.log(e.target.parentNode);
+        var mole = e.target; //Functie werkte voorheen niet omlaag omdat ik de hole de .up class gaf en naar this.classlist.remove vewees. Nu target ik de parentnode van de class waar ik op klik, waardoor de mol verdwijnt als je erop klikt.
+        var hole = mole.parentNode;
         score++;
-        this.classList.remove('up'); // Werkt niet
+        //this.classList.remove('up'); // Werkt niet
+        //e.srcElement.classList.remove('up');
+        hole.classList.remove('up');
         scoreBoard[0].innerHTML = score;
         audio.play();
       }
-
-      // mol achter het gat krijgen
-      // remove up class bij dreun

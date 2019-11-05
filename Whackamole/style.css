@@ -24,10 +24,8 @@ h1 {
   border-radius: 50%;
   align-self: center;
   justify-self: center;
-  z-index: 9001;
   position: relative;
   margin-bottom: -120px;
-
 }
 
 .mole {
@@ -38,7 +36,7 @@ h1 {
   top: 100%;
   position:absolute;
   margin: 0 auto;
-  transition: all 0.4s;
+  transition: all 0.3s;
   margin-top: -75px;
   visibility: hidden;
 }
