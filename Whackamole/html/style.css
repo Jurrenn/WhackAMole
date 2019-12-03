@@ -1,0 +1,56 @@
+html, body {
+  background-color: lightblue;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Amatic SC';
+
+}
+
+h1 {
+  color: black;
+  font-family: 'Amatic SC', Geneva, Tahoma, sans-serif;
+  margin-left: 20px;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.hole {
+  height: 60px;
+  width: 125px;
+  background-color: #512700;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  margin-bottom: -120px;
+}
+
+.mole {
+  content:url(mole.png);
+  background-size: 60%;
+  height: 100px;
+  width: 100%;
+  top: 100%;
+  position:absolute;
+  margin: 0 auto;
+  transition: all 0.3s;
+  margin-top: -75px;
+  visibility: hidden;
+}
+
+.hole.up .mole {
+ top: 0;
+ visibility: visible;
+}
+
+.gameArea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: minmax(200px, auto);
+  width: 75%;
+  margin-left: 12.5%;
+}
